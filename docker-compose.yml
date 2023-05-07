@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  chanchito:
+    build: .
+    ports:
+      - "3000:3000"
+    links:
+      - monguito
+  monguito:
+    image: mongo
+    ports:
+      - "27020:27017"
+    environment:  
+      - MONGO_INITDB_ROOT_USERNAME=lean
+      - MONGO_INITDB_ROOT_PASSWORD=123456
+    volumes:
+       - mongo-data:/data/db
+volumes:
+  mongo-data:
+  
